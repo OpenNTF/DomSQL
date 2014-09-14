@@ -1,0 +1,16 @@
+<DomSQL>
+	<Nsf>
+		<View view='AllContacts'>
+		</View>
+		<View table='States' view='AllStates'>
+		</View>
+	</Nsf>
+	<Init>
+		<Sql>
+			CREATE VIEW AllContactsState AS select a.LastName, a.FirstName, b.Key, b.Name from AllContacts a left outer join States b on a.State=b.Key order by a.LastName, a.FirstName
+		</Sql>
+		<Sql>
+			CREATE VIEW AllContactsStateByState AS select b.Key, b.Name, a.LastName, a.FirstName from AllContacts a left outer join States b on a.State=b.Key order by b.Key 
+		</Sql>
+	</Init>
+</DomSQL>

@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Domino Sqlite Plug-in
+Bundle-SymbolicName: com.ibm.domino.domsql.sqlite;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: J2SE-1.6
+Require-Bundle: com.ibm.commons,
+ com.ibm.commons.jdbc,
+ com.ibm.domino.domsql.driver,
+ org.eclipse.core.jobs,
+ com.ibm.dots;resolution:=optional
+Export-Package: com.ibm.domino.domsql,
+ com.ibm.domino.domsql.remote.server,
+ com.ibm.domino.domsql.remote.server.rmi,
+ com.ibm.domino.domsql.sqlite,
+ com.ibm.domino.domsql.sqlite.driver,
+ com.ibm.domino.domsql.sqlite.driver.jdbc,
+ com.ibm.domino.domsql.sqlite.driver.jni,
+ com.ibm.domino.domsql.sqlite.driver.meta
+Bundle-ClassPath: .

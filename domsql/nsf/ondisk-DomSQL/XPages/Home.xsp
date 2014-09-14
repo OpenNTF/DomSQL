@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xp:this.resources>
+		<xp:dojoModule name="extlib.dijit.Loading"></xp:dojoModule>
+	</xp:this.resources>
+	<xc:OneUILayout navigationPath="/Home">
+		<xp:panel>
+			<xp:label value="Welcome to DomSQL!" id="label1"
+				style="font-weight:bold;font-size:16pt">
+			</xp:label>
+			<xp:br></xp:br>
+			<xp:br></xp:br>
+			This page shows you the views defined in the database and gives you access to its content. It
+			allows you to compare the data coming from a regular Domino view and the result of the SQL
+			queries.
+			<xp:div style="color:rgb(255,0,0);font-weight:bold"
+				rendered="#{javascript:database.getAllDocuments().getCount()==0}">
+				<xp:br></xp:br>
+				<xp:br></xp:br>
+				The runtime detected that the database is not initialized
+				with data.
+				<xp:br />
+				Click the "Database Setup" button in the header to create a data
+				set.
+				<xp:br />
+				<xp:br></xp:br>
+				<xp:br></xp:br>
+				<xp:br></xp:br>
+			</xp:div>
+			<xp:label value="Select the view you want to display" id="label5"
+				style="font-weight:bold">
+			</xp:label>
+			<xp:br></xp:br>
+			<xp:comboBox id="comboBox1" value="#{viewScope.viewName}">
+				<xp:selectItems>
+					<xp:this.value><![CDATA[#{javascript:var v = database.getViews();
+var a = []
+for(var i=0; i<v.size(); i++) {
+	a[i] = v[i].getName()
+}
+return a}]]></xp:this.value>
+				</xp:selectItems>
+				<xp:eventHandler event="onchange" submit="true"
+					refreshMode="partial" refreshId="dynamicViewPanel1"
+					onStart="XSP.startAjaxLoading()" onComplete="XSP.endAjaxLoading()"
+					onError="XSP.endAjaxLoading()">
+				</xp:eventHandler>
+			</xp:comboBox>
+			<xp:br></xp:br>
+			<xp:br></xp:br>
+			<xp:div>
+				<xe:dynamicViewPanel rows="10" id="dynamicViewPanel1">
+					<xe:this.facets>
+						<xp:pager partialRefresh="true" layout="Previous Group Next"
+							xp:key="headerPager" id="pager1">
+						</xp:pager>
+					</xe:this.facets>
+					<xe:this.data>
+						<xp:dominoView var="view1" viewName="#{viewScope.viewName}">
+						</xp:dominoView>
+					</xe:this.data>
+				</xe:dynamicViewPanel>
+			</xp:div>
+		</xp:panel>
+	</xc:OneUILayout>
+</xp:view>
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xc:OneUILayout navigationPath="/MetaData">
+		<xp:panel>
+			<xc:JdbcConnection></xc:JdbcConnection>
+			<xp:br></xp:br><xp:br></xp:br>Select a Table:
+			<xp:comboBox id="tableCombo" value="#{viewScope.tableName}">
+				<xp:selectItem itemLabel="&lt;Table&gt;" />
+				<xp:selectItems>
+					<xp:this.value><![CDATA[#{javascript:dbUtil.listTables();
+}]]></xp:this.value>
+				</xp:selectItems>
+				<xp:eventHandler event="onchange" submit="true"
+					refreshMode="partial" refreshId="dumpObject1">
+				</xp:eventHandler></xp:comboBox>
+			<xp:br></xp:br>
+			<xe:dumpObject id="dumpObject1" title="Table MetaData"
+				maxGridRows="20">
+
+				<xe:this.value><![CDATA[#{javascript:var tb = viewScope.tableName
+if(tb) {
+	var sql = "select * from "+tb;
+	var rs = @JdbcExecuteQuery(dbUtil.getConnection(),sql);
+	return rs.getMetaData();
+}
+return null}]]></xe:this.value>
+			</xe:dumpObject>
+		</xp:panel>
+	</xc:OneUILayout>
+</xp:view>

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Domino Sqlite Driver
+Bundle-SymbolicName: com.ibm.domino.domsql.driver;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: IBM
+Bundle-RequiredExecutionEnvironment: J2SE-1.6
+Bundle-ClassPath: .
+Export-Package: com.ibm.domino.domsql,
+ com.ibm.domino.domsql.remote.client,
+ com.ibm.domino.domsql.remote.transport

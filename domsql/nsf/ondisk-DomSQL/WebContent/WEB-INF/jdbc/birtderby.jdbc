@@ -1,0 +1,6 @@
+<jdbc>
+	<driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+	<url>jdbc:derby:c:\temp\BirtSample</url>
+	<user>phil</user>
+	<password>phil</password>
+</jdbc>

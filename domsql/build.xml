@@ -1,0 +1,140 @@
+<!-- ********************************************************************** -->
+<!--																		-->
+<!-- © Copyright IBM Corp. 2014												-->
+<!-- 																		-->
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); 		-->
+<!-- you may not use this file except in compliance with the License. 		-->
+<!-- You may obtain a copy of the License at:								-->
+<!-- 																		-->
+<!-- http://www.apache.org/licenses/LICENSE-2.0 							-->
+<!-- 																		-->
+<!-- Unless required by applicable law or agreed to in writing, software 	-->
+<!-- distributed under the License is distributed on an "AS IS" BASIS,		--> 
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 		-->
+<!-- implied. See the License for the specific language governing			--> 
+<!-- permissions and limitations under the License.							-->
+<!--																		-->
+<!-- ********************************************************************** -->
+
+<!-- This build script has been copied from the ExtLib -->
+<!-- It is not yet complete, but will be updated in future -->
+<!-- in order to facilitate easily building the release zip -->
+<project name="DomSQL" default="build.release" basedir=".">
+	<import file="${env.WPLC_IMPORT}/signupdatesite.xml" />
+	<import file="${env.WPLC_IMPORT}/site_xml_validator2.xml" />
+	<taskdef name="generateSiteXml" classname="com.ibm.ws.build.tasks.plugins.kitting.GenerateSiteXML" />
+	
+	<property name="skip.validate.site" value="false"/>
+	<property name="dir.plugins" value="${basedir}/eclipse/plugins"/>
+	<property name="dir.features" value="${basedir}/eclipse/features"/>
+	<property name="dir.release.output" value="${basedir}/release"/>
+	<property name="dir.resources" value="${basedir}/doc"/>
+	<property name="dir.temp" value="${basedir}/temp"/>
+	<property name="dir.src.root" value="${basedir}/eclipse/"/>
+	<property name="release.version" value="1.0.0"/>
+	
+	<target name="build.src.zip">		
+		<!-- Generate the srcOpenNTF.zip file -->
+		<zip destfile="${dir.temp}/srcOpenNTF.zip">
+			<zipfileset dir="${dir.src.root}" prefix="eclipse" excludes="**/bin/**" />
+		</zip>
+	</target>
+	
+	<target name="build.updateSite.zip">
+		<!-- Copy the built plugin to the temp dir -->
+		<copy todir="${dir.temp}">
+		    <fileset dir="${dir.updateSite.plugins}" includes="*.jar" />
+		</copy>
+		
+		<property name="dir.updateSite.temp" value="${dir.release.output}/updateSite" />
+		<mkdir dir="${dir.updateSite.temp}" />
+		<mkdir dir="${dir.updateSite.temp}/features" />
+		<mkdir dir="${dir.updateSite.temp}/plugins" />
+
+		<!-- Copy the plugins and features jars -->
+		<!-- Could be replaced with script to jar plugins and then jar features -->
+		<copy todir="${dir.updateSite.temp}/plugins">
+			<fileset dir="${dir.updateSite.plugins}" includes="*.jar"/>
+		</copy>
+		<copy todir="${dir.updateSite.temp}/features">
+			<fileset dir="${dir.updateSite.features}" includes="*.jar"/>
+		</copy>
+
+		<generateSiteXml siteroot="${dir.updateSite.temp}" category="OpenNTF Builds" categoryDesc="XPages Relational Sample Update Site" />
+
+		<!-- Validate the update site -->
+        <if>
+			<not>
+	            <equals arg1="${skip.validate.site}" arg2="true"/>
+			</not>
+            <then>
+				<antcall target="validate.update.site">
+					<param name="update.site.source" value="${dir.updateSite.temp}" />
+					<!-- Don't recurse dependencies looking for things like Eclipse on this site.  -->
+					<param name="featuresOnly" value="true" />
+				</antcall>
+			</then>
+		</if>
+		
+		<!-- Generate the zip file -->
+		<zip destfile="${dir.temp}/updateSiteOpenNTF.zip">
+			<zipfileset dir="${dir.updateSite.temp}" />
+		</zip>
+		
+		<delete dir="${dir.updateSite.temp}" />
+		<delete dir="${basedir}/build" />
+	</target>
+	
+	<target name="zip.dir">
+		<echo message="Zipping ${dir}" />
+	    <!-- jar the plugin or feature for the updateSite -->
+		<basename file="${dir}" property="jar.name" />
+		<zip destfile="${dest}/${jar.name}.jar">
+			<fileset dir="${dir}" excludes="component.xml" />
+		</zip>
+	</target>
+
+	<target name="build.release">
+		<!-- Remove old zip -->
+		<delete>
+			<fileset dir="${dir.release.output}" includes="*.zip" />
+		</delete>
+		
+		<!-- Build updateSite and src zip files -->
+		<mkdir dir="${basedir}/release" />
+		<antcall target="build.updateSite.zip" />
+		<antcall target="build.src.zip" />
+		
+		<!-- Copy necessary files to the temp folder -->
+		<copy todir="${dir.temp}">
+		    <fileset dir="${dir.application}" includes="*.nsf" />
+		    <fileset dir="${basedir}" includes="*.pdf" />
+		    <fileset dir="${basedir}" includes="LICENSE" />
+		    <fileset dir="${basedir}" includes="NOTICE" />
+		</copy>
+		
+		<!-- Get the filename of the plugin jar -->
+		<!-- <fileset id="plugin.jar.file" dir="${dir.updateSite.plugins}" includes="*.jar" />
+		<pathconvert property="plugin.jar.path" refid="plugin.jar.file" />
+		<basename property="plugin.jar.filename" file="${plugin.jar.path}" suffix=".jar" />
+		<echo message="filename = ${plugin.jar.filename}" />
+		<script language="javascript">
+		    var original = project.getProperty("plugin.jar.filename");
+		    project.setProperty("release.filename", original.replace("org.openntf.xsp.relational.derby_", "XPagesRelationalSample_"));
+		</script> -->
+
+		<!-- Generate the filename of the release zip -->
+    	<tstamp>
+    		<format property="date.stamp" pattern="yyyyMMddHHmm" locale="en,GB"/>
+    	</tstamp>
+		<property name="release.filename" value="XPagesRDBMSEnablement_${release.version}_${date.stamp}"/>
+				
+		<!-- Generate the zip file -->
+		<zip destfile="${dir.release.output}/${release.filename}.zip">
+			<zipfileset dir="${dir.temp}" prefix="XPagesRelationalSample" />
+		</zip>
+		
+		<!-- Clean up - Discard temp folder -->
+		<delete dir="${dir.temp}" />
+	</target>
+</project>

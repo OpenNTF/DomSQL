@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Domsql
+Bundle-SymbolicName: com.ibm.xsp.extlib.relational.domsql;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: IBM
+Fragment-Host: com.ibm.xsp.extlib.relational
+Require-Bundle: com.ibm.notes.java.api,
+ com.ibm.commons.jdbc,
+ com.ibm.designer.lib.jsf,
+ com.ibm.xsp.core,
+ com.ibm.designer.runtime,
+ com.ibm.xsp.extsn,
+ com.ibm.xsp.domino,
+ com.ibm.domino.domsql.driver;bundle-version="1.0.0",
+ com.ibm.domino.domsql.sqlite;bundle-version="1.0.0"
+Export-Package: com.ibm.xsp.extlib.relational.domsql

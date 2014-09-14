@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+  <faces-config-extension>
+    <namespace-uri>http://www.ibm.com/xsp/custom</namespace-uri>
+    <default-prefix>xc</default-prefix>
+  </faces-config-extension>
+  <composite-component>
+    <component-type>OneUILayout</component-type>
+    <composite-name>OneUILayout</composite-name>
+    <composite-file>/OneUILayout.xsp</composite-file>
+    <composite-extension>
+      <designer-extension>
+        <in-palette>true</in-palette>
+        <render-markup>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xd;
+&lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&#xd;
+  xmlns:xc="http://www.ibm.com/xsp/custom"&gt;&#xd;
+&lt;xp:div style="background-color:#CEE1FC; padding:5px"&gt;&#xd;
+&lt;table width="98%"&gt;&lt;tr&gt;&lt;td&gt;&#xd;
+  {logo} &amp;#160; {bannerApplicationLinks}&#xd;
+&lt;/td&gt;&lt;td align="right"&gt;{bannerUtilityLinks}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xd;
+  &lt;xp:table style="width: 98%; background-color:#FFFFFF"&gt;&#xd;
+    &lt;xp:tr&gt;&#xd;
+      &lt;xp:td colspan="3" style="background-color:#4586D3"&gt;&#xd;
+        &lt;table width="100%"&gt;&lt;tr&gt;&lt;td&gt;&#xd;
+          &lt;table&gt;&lt;tr&gt;&#xd;
+            &lt;td style="background-color:#4372A9;color:#FFFFFF"&gt;&#xd;
+              {titleBarTabs}&lt;/td&gt;&#xd;
+            &lt;td style="background-color:#E4E8EF"&gt;&#xd;
+              selected&lt;/td&gt;&#xd;
+          &lt;/tr&gt;&lt;/table&gt;&#xd;
+        &lt;/td&gt;&lt;td&gt;&#xd;
+          &lt;div style="float:right;background:#FFFFFF"&gt;&#xd;
+                {searchBar}&lt;/div&gt;&#xd;
+        &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xd;
+      &lt;/xp:td&gt;&#xd;
+    &lt;/xp:tr&gt;&#xd;
+    &lt;xp:tr&gt;&#xd;
+      &lt;xp:td colspan="3" style="background-color:#E4E8EF"&gt;&#xd;
+        &lt;table width="100%"&gt;&lt;tr&gt;&lt;td&gt;&lt;h2&gt;{placeBarName}&lt;/h2&gt;&lt;/td&gt;&#xd;
+          &lt;td&gt; &#xd;
+              &lt;div style="float:right;border:thin solid #C0C7CD"&gt;&#xd;
+                {placeBarActions}&lt;/div&gt;&lt;/td&gt;&#xd;
+        &lt;/tr&gt;&lt;/table&gt;&#xd;
+      &lt;/xp:td&gt;&#xd;
+    &lt;/xp:tr&gt;&#xd;
+    &lt;xp:tr&gt;&#xd;
+      &lt;xp:td style="width:123px" valign="top"&gt;&#xd;
+        &lt;xp:callback id="LeftColumn" facetName="LeftColumn"/&gt;&#xd;
+      &lt;/xp:td&gt;&#xd;
+      &lt;xp:td valign="top"&gt;&#xd;
+        &lt;xp:callback id="callback1"/&gt;&#xd;
+&lt;xp:br/&gt;&lt;xp:br/&gt;&lt;xp:br/&gt;&#xd;
+      &lt;/xp:td&gt;&#xd;
+      &lt;xp:td style="width:123px" valign="top"&gt;&#xd;
+        &lt;xp:callback id="RightColumn" facetName="RightColumn" /&gt;&#xd;
+      &lt;/xp:td&gt;&#xd;
+    &lt;/xp:tr&gt;&#xd;
+  &lt;/xp:table&gt;&#xd;
+  &lt;xp:table style="width: 98%; background-color:#FFFFFF; margin-top:5px"&gt;&#xd;
+  &lt;xp:tr&gt;&lt;xp:td&gt; {footerLinks}&lt;/xp:td&gt;&lt;/xp:tr&gt;&#xd;
+  &lt;/xp:table&gt;&#xd;
+  {legalText}&#xd;
+  &lt;/xp:div&gt;&#xd;
+&lt;/xp:view&gt;&#xd;
+</render-markup>
+      </designer-extension>
+    </composite-extension>
+    <property>
+      <property-name>navigationPath</property-name>
+      <property-class>string</property-class>
+    </property>
+    <property>
+      <property-name>defaultNavigationPath</property-name>
+      <property-class>string</property-class>
+    </property>
+  </composite-component>
+</faces-config>

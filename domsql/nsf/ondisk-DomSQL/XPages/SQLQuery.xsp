@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:this.resources>
+		<xp:dojoModule name="extlib.dijit.Loading"></xp:dojoModule>
+	</xp:this.resources>
+	<xc:OneUILayout navigationPath="/SQLQuery">
+		<xp:panel id="main">
+			<xp:label id="label5" style="font-weight:bold" value="Dynamic SQL Query">
+			</xp:label>
+			<xp:br></xp:br>
+			<xp:br></xp:br>
+			This is a quick demo of a user defined SQL query displayed
+			using the
+			DumpObject control.
+			<xp:br></xp:br>
+			<xp:br></xp:br>
+			<xc:JdbcConnection></xc:JdbcConnection>
+			<xp:br></xp:br>
+			<xp:br></xp:br>
+			<xp:table>
+				<xp:tr>
+					<xp:td valign="top">
+						<xp:listBox id="tableCombo" value="#{viewScope.tableName}"
+							style="height:5em">
+							<xp:selectItems>
+								<xp:this.value><![CDATA[#{javascript:dbUtil.listTables();
+}]]></xp:this.value>
+							</xp:selectItems>
+							<xp:eventHandler event="ondblclick" submit="false">
+								<xp:this.script><![CDATA[var l = dojo.byId('#{id:tableCombo}')
+var idx = l.selectedIndex;
+var sel = "SELECT * FROM "+l.options[idx].text;
+dojo.byId('#{id:inputTextarea1}').value = sel
+dojo.byId('#{id:button1}').click()]]></xp:this.script>
+							</xp:eventHandler>
+						</xp:listBox>
+						<xp:br />
+						<xp:br />
+						<xe:valuePicker id="valuePicker11" for="inputTextarea1"
+							pickerText="Sample Requests..." dojoType="extlib.dijit.PickerList">
+							<xe:this.dataProvider>
+								<xe:beanValuePicker dataBean="sqlPicker">
+								</xe:beanValuePicker>
+							</xe:this.dataProvider>
+						</xe:valuePicker>
+					</xp:td>
+					<xp:td>
+						<xp:inputTextarea id="inputTextarea1" cols="80"
+							rows="6" style="font-family:Courier New">
+						</xp:inputTextarea>
+					</xp:td>
+				</xp:tr>
+				<xp:tr>
+					<xp:td colspan="2">
+						<xp:button value="Execute" id="button1">
+							<xp:eventHandler event="onclick" submit="true"
+								onStart="XSP.startAjaxLoading()" onComplete="XSP.endAjaxLoading()"
+								onError="XSP.endAjaxLoading()" refreshMode="partial" refreshId="main">
+							</xp:eventHandler>
+						</xp:button>
+					</xp:td>
+				</xp:tr>
+				<xp:tr>
+					<xp:td colspan="2">
+						<xe:dumpObject id="dumpObject1" title="SQL Result"
+							maxGridRows="20">
+							<xe:this.value><![CDATA[#{javascript:try {
+	var sql = getComponent("inputTextarea1").getValue()
+	if(sql) {
+		var st = dbUtil.getConnection().createStatement();
+		return st.executeQuery(sql);
+	}
+} catch(e) {
+	requestScope.err = e.toString();
+}	
+return null}]]></xe:this.value>
+						</xe:dumpObject>
+						<xp:text escape="true" id="computedField1" styleClass="lotusMessage"
+							rendered="#{javascript:requestScope.err!=null}" value="#{javascript:requestScope.err}">
+						</xp:text>
+					</xp:td>
+				</xp:tr>
+			</xp:table>
+		</xp:panel>
+	</xc:OneUILayout>
+</xp:view>
