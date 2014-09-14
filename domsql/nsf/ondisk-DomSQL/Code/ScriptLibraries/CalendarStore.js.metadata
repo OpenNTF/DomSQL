@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="filter" maintenanceversion="3.0" replicaid="8525787B005A5D1D" version="8.5" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="39a" sequence="10" unid="8E9D049A0B0BEF328525786B00660154">
+<created><datetime dst="true">20110407T143410,12-04</datetime></created>
+<modified><datetime dst="true">20110423T122704,05-04</datetime></modified>
+<revised><datetime dst="true">20110420T110052,34-04</datetime></revised>
+<lastaccessed><datetime dst="true">20110423T122704,05-04</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20110423T122704,05-04</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Philippe Riand/OU=Westford/O=IBM</name></updatedby>
+<wassignedby><name>CN=Philippe Riand/OU=Westford/O=IBM</name></wassignedby>
+<item name="$TITLE" sign="true"><text>CalendarStore.js</text></item>
+<item name="$Flags"><text>h534Q</text></item>
+<item name="$PublicAccess" sign="true"><text>1</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+</note>

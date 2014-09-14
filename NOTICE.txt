@@ -1,0 +1,20 @@
+OpenNTF - JDBC Access for IBM Lotus Domino
+http://www.openntf.org/p/JDBC%20Access%20for%20IBM%20Lotus%20Domino
+© Copyright IBM Corp. 2012, 2014
+
+This product includes software contributed to 
+OpenNTF – (http://www.OpenNTF.org) 
+
+
+SQLite 3.7.15
+http://www.sqlite.org
+Available as public domain
+See http://www.sqlite.org/copyright.html for more details
+All of the deliverable code in SQLite has been dedicated to the public domain by the authors
+
+
+SqliteJDBC 0.5.6
+http://www.zentus.com/sqlitejdbc
+Available under BSD license
+see http://www.zentus.com/sqlitejdbc/license.html for more details
+Copyright (c) 2007 David Crawshaw <david@zentus.com>

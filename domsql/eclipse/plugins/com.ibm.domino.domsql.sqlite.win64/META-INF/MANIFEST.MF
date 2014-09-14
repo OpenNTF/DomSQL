@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Eclipse-PlatformFilter: (& (osgi.ws=win32) (osgi.os=win32) (osgi.arch=x86_64))
+Bundle-Name: SQLite Win64
+Bundle-SymbolicName: com.ibm.domino.domsql.sqlite.win64;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-NativeCode: /lib/domsql.dll
+Bundle-Vendor: IBM
+Fragment-Host: com.ibm.domino.domsql.sqlite
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

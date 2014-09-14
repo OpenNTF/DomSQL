@@ -1,0 +1,4 @@
+<DomSQL sqliteFile=':memory:'>
+	<Nsf defaultViews='true'>
+	</Nsf>
+</DomSQL>

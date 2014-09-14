@@ -1,0 +1,21 @@
+<DomSQL>
+	<Nsf defaultViews='true'>
+		<View view='AllContacts' table='AllContactsSystem' systemColumns='@all'>
+		</View>
+		<View view='AllContacts' table='AllContactsUnid' systemColumns='@unid'>
+		</View>
+		<View view='AllContacts' table='AllContactsSelectedCols' defaultColumns='FIRSTNAME|LASTNAME|CITY'>
+		</View>
+		<View view='AllTypes' table='AllTypesMulti' options='SeparateMulti'>
+		</View>
+		<View view='AllTypes' table='AllTypesMultiText' options='SeparateMulti' systemColumns='@id|@rowid' defaultColumns=''>
+			<Column name='FLDTEXT2' type='text' />			
+		</View>
+		<View view='AllTypes' table='AllTypesMultiNumber' options='SeparateMulti' systemColumns='@id|@rowid' defaultColumns=''>
+			<Column name='FLDNUMBER2' type='double' />			
+		</View>
+		<View view='AllTypes' table='AllTypesMultiTime' options='SeparateMulti' systemColumns='@id|@rowid' defaultColumns=''>
+			<Column name='FLDTIME2' type='date' />			
+		</View>
+	</Nsf>
+</DomSQL>

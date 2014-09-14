@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xc:OneUILayout navigationPath="/Performance">
+		<xp:panel>
+			<xp:label id="label5" style="font-weight:bold" value="Dynamic View Panel">
+			</xp:label>
+			<xp:br></xp:br>
+			<xp:br></xp:br>
+			This page runs a performance test by reading the content of the view,
+			using both the backend
+			classes and DomSQL.
+			<xp:br></xp:br>
+			<xp:br></xp:br>
+			<xp:comboBox id="comboBox1" value="#{viewScope.viewName}">
+				<xp:selectItems>
+					<xp:this.value><![CDATA[#{javascript:var v = database.getViews();
+var a = []
+for(var i=0; i<v.size(); i++) {
+	a[i] = v[i].getName()
+}
+return a}]]></xp:this.value>
+				</xp:selectItems>
+			</xp:comboBox>
+			<xp:button value="Run Test" id="button1">
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete">
+					<xp:this.action><![CDATA[#{javascript:var vn = viewScope.viewName
+if(vn) {
+	var test = xpages.Performance.runTest(vn,5);
+	viewScope.result = test.toString()
+}}]]></xp:this.action>
+				</xp:eventHandler>
+			</xp:button>
+			<xp:panel rendered="#{javascript:viewScope.result!=null}">
+				<xp:br></xp:br>
+				Test Result:
+				<xp:br></xp:br>
+				<xp:text escape="true" id="computedField1" tagName="pre"
+					value="#{viewScope.result}">
+				</xp:text>
+			</xp:panel>
+		</xp:panel>
+	</xc:OneUILayout>
+</xp:view>

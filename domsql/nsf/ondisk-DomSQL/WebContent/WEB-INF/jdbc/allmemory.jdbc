@@ -1,0 +1,4 @@
+<jdbc>
+	<driver>com.ibm.domino.domsql.DomSQLDriver</driver>
+	<url>jdbc:domsql:${database}/allmemory</url>
+</jdbc>

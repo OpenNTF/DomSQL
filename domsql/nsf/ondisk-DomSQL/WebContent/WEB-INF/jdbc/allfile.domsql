@@ -1,0 +1,4 @@
+<DomSQL sqliteFile='c:\temp\mydb.db'>
+	<Nsf defaultViews='true'>
+	</Nsf>
+</DomSQL>

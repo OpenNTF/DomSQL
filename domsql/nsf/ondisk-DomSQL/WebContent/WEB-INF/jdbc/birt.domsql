@@ -1,0 +1,40 @@
+<DomSQL>
+	<Nsf>
+		<View view='CUSTOMERS'>
+			<Column name='CUSTOMERNUMBER' type='int'></Column>
+			<Column name='SALESREPEMPLOYEENUMBER' type='int'></Column>
+			<Column name='CREDITLIMIT' type='double'></Column>
+		</View>
+		<View view='EMPLOYEES'>
+			<Column name='EMPLOYEENUMBER' type='int'></Column>
+			<Column name='REPORTSTO' type='int'></Column>
+		</View>
+		<View view='OFFICES'>
+		</View>
+		<View view='ORDERDETAILS'>
+			<Column name='ORDERNUMBER' type='int'></Column>
+			<Column name='QUANTITYORDERED' type='double'></Column>
+			<Column name='PRICEEACH' type='double'></Column>
+			<Column name='ORDERLINENUMBER' type='int'></Column>
+		</View>
+		<View view='ORDERS'>
+			<Column name='ORDERNUMBER' type='int'></Column>
+			<Column name='ORDERDATE' type='date'></Column>
+			<Column name='REQUIREDDATE' type='date'></Column>
+			<Column name='SHIPPEDDATE' type='date'></Column>
+			<Column name='CUSTOMERNUMBER' type='int'></Column>
+		</View>
+		<View view='PAYMENTS'>
+			<Column name='CUSTOMERNUMBER' type='int'></Column>
+			<Column name='PAYMENTDATE' type='date'></Column>
+			<Column name='AMOUNT' type='double'></Column>
+		</View>
+		<View view='PRODUCTLINES'>
+		</View>
+		<View view='PRODUCTS'>
+			<Column name='QUANTITYINSTOCK' type='int'></Column>
+			<Column name='BUYPRICE' type='double'></Column>
+			<Column name='MSRP' type='double'></Column>
+		</View>
+	</Nsf>
+</DomSQL>

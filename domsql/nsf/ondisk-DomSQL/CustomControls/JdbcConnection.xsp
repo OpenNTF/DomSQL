@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	Connection:&#160;
+	<xp:comboBox id="comboBox1" value="#{sessionScope.jdbcConnection}">
+		<xp:selectItem itemLabel="All" itemValue="all"></xp:selectItem>
+		<xp:selectItem itemLabel="All File" itemValue="allfile"></xp:selectItem>
+		<xp:selectItem itemLabel="All Memory" itemValue="allmemory"></xp:selectItem>
+		<xp:selectItem itemLabel="All Remote" itemValue="allremote"></xp:selectItem>
+		<xp:selectItem itemLabel="Birt" itemValue="birt"></xp:selectItem>
+		<xp:selectItem itemLabel="Birt Remote" itemValue="birtremote"></xp:selectItem>
+		<xp:selectItem itemLabel="Birt Derby" itemValue="birtderby"></xp:selectItem>
+		<xp:selectItem itemLabel="Users" itemValue="users"></xp:selectItem>
+		<xp:eventHandler event="onchange" submit="true"
+			refreshMode="partial" refreshId="tableCombo">
+		</xp:eventHandler>
+	</xp:comboBox>
+</xp:view>

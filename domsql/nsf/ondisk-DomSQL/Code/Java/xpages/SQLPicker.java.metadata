@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="3.0" replicaid="8525787B005A5D1D" version="8.5" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="6b6" sequence="18" unid="B07D78F940D91AE9852578FC005E1732">
+<created><datetime dst="true">20110830T130743,22-04</datetime></created>
+<modified><datetime dst="true">20110830T134801,27-04</datetime></modified>
+<revised><datetime dst="true">20110830T134801,26-04</datetime></revised>
+<lastaccessed><datetime dst="true">20110830T134801,27-04</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20110830T130743,24-04</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Philippe Riand/OU=Westford/O=IBM</name></updatedby>
+<wassignedby><name>CN=Philippe Riand/OU=Westford/O=IBM</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+
+
+
+<item name="$TITLE"><text>xpages/SQLPicker.java</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>xpages/SQLPicker.java</text></item></note>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.ibm.dots.task">
+      <task
+            class="com.ibm.domino.domsql.dots.StartTask"
+            id="domsql.rmijdbc"
+            runOnStart="true">
+      </task>
+   </extension>
+
+</plugin>

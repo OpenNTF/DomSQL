@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.ibm.domino.domsql.xpages.feature_1.0.0.jar" id="com.ibm.domino.domsql.xpages.feature" version="1.0.0" os="win32" ws="win32" arch="x86"/>
+</site>
